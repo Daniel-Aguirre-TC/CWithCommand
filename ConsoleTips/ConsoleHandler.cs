@@ -7,7 +7,7 @@ namespace ConsoleTips
     public static class ConsoleHandler
     {
         // tipsSection will be used to handle the base optionsList.
-        public enum TipsSection { console, github, dotnet, cs }
+        public enum TipsSection { console, github, dotnet, c_sharp }
         public static bool programActive = true;
         public static void OfferNewCommandList()
         {
@@ -108,14 +108,19 @@ namespace ConsoleTips
                 case TipsSection.dotnet:
                     commandsList = CommandLists.dotnetList;
                     break;
-                case TipsSection.cs:
-                    // Go To CS page?
+                case TipsSection.c_sharp:
+                    // break out of switch statement and next if statement will handle calling c_sharp Menu
                     break;
                 default:
                     Console.WriteLine($"No data for TipsSection.{selection}\n\nWill Now End Application.");
                     ReadAndClear();
                     EndApplication();
                     break;
+            }
+            WriteSelection(selection);
+            if (selection == TipsSection.c_sharp)
+            {
+                // Show cSharp Menu Options - for now we can have Variables and Operators
             }
             foreach (Command cmd in commandsList)
             {
