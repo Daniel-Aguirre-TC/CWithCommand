@@ -64,7 +64,7 @@ namespace ConsoleTips
         {
             // temporarily assign selectedSection to console so it can compile 
             TipsSection selectedSection = TipsSection.console;
-            System.Console.WriteLine("Please select one of the following:\n\n1) Console\n2) Github\n3) DotNet\n4) C_Sharp");
+            System.Console.WriteLine("Please select one of the following:\n\n1) Console\n2) Github\n3) DotNet\n4) C_Sharp\n");
             ConsoleKeyInfo input = Console.ReadKey();
             switch (input.KeyChar)
             {
@@ -119,19 +119,14 @@ namespace ConsoleTips
                     EndApplication();
                     break;
             }
-            WriteSelection(selection);
+            // since other options go directly to CommandList
             if (selection == TipsSection.c_sharp)
             {
-                ReadAndClear();
-                //temporarily just going to display list. Later will create a menu to view other c_sharp lists.
-                foreach (Tip tip in CSharpLists.variableTypes)
-                {
-                    Console.WriteLine($"{tip.name} :\n{tip.example}\n{tip.desc}\n\n");
-                }
+                GetCSharpList();
             }
             else
             {
-
+                
                 Console.WriteLine($"{selection} Commands:\n----------------------\n");
                 foreach (Command cmd in commandsList)
                 {
@@ -142,6 +137,36 @@ namespace ConsoleTips
         public static void WriteSelection(TipsSection selection)
         {
             Console.WriteLine($"\n\nYou have selected {selection}.\n\nPress any key to continue.");
+        }
+
+        // Temporary method to show cSharp List - need to refactor to only have one getInput for menus.
+        public static void GetCSharpList()
+        {
+            List<Tip> subSection = null;
+            Console.WriteLine($"Please select a category:\n\n1) Variables\n2) Operators");
+            ConsoleKeyInfo input = Console.ReadKey();
+            switch (input.KeyChar)
+            {
+                case 'e':
+                    EndApplication();
+                    break;
+                case '1':
+                    subSection = CSharpLists.variableTypes;
+                    break;
+                case '2':
+                    subSection = CSharpLists.operatorTypes;
+                    break;
+                default:
+                    System.Console.WriteLine("\nInvalid Selection.\nPlease Select a valid option.");
+                    ReadAndClear();
+                    GetCSharpList();
+                    break;
+            }
+            foreach (Tip tip in subSection)
+            {
+                Console.WriteLine($"{tip.name} :\n{tip.example}\n{tip.desc}\n\n");
+            }
+
         }
 
     }
