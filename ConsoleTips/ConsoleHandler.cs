@@ -64,7 +64,7 @@ namespace ConsoleTips
         {
             // temporarily assign selectedSection to console so it can compile 
             TipsSection selectedSection = TipsSection.console;
-            System.Console.WriteLine("Please select one of the following:\n\n1) Console\n2) Github\n3) DotNet\n");
+            System.Console.WriteLine("Please select one of the following:\n\n1) Console\n2) Github\n3) DotNet\n4) C_Sharp");
             ConsoleKeyInfo input = Console.ReadKey();
             switch (input.KeyChar)
             {
@@ -80,6 +80,9 @@ namespace ConsoleTips
                 case '3':
                     selectedSection = TipsSection.dotnet;
                     break;
+                case '4':
+                    selectedSection = TipsSection.c_sharp;
+                    break;
                 default:
                     System.Console.WriteLine("\nInvalid Selection.\nPlease Select a valid option.");
                     ReadAndClear();
@@ -90,7 +93,6 @@ namespace ConsoleTips
             ReadAndClear();
             if (programActive)
             {
-                System.Console.WriteLine($"{selectedSection} Commands:\n----------------------\n");
                 DisplaySelected(selectedSection);
             }
         }
@@ -120,11 +122,21 @@ namespace ConsoleTips
             WriteSelection(selection);
             if (selection == TipsSection.c_sharp)
             {
-                // Show cSharp Menu Options - for now we can have Variables and Operators
+                ReadAndClear();
+                //temporarily just going to display list. Later will create a menu to view other c_sharp lists.
+                foreach (Tip tip in CSharpLists.variableTypes)
+                {
+                    Console.WriteLine($"{tip.name} :\n{tip.example}\n{tip.desc}\n\n");
+                }
             }
-            foreach (Command cmd in commandsList)
+            else
             {
-                System.Console.WriteLine($"{cmd.name} \n- {cmd.desc}\n");
+
+                Console.WriteLine($"{selection} Commands:\n----------------------\n");
+                foreach (Command cmd in commandsList)
+                {
+                    Console.WriteLine($"{cmd.name} \n- {cmd.desc}\n");
+                }
             }
         }
         public static void WriteSelection(TipsSection selection)
