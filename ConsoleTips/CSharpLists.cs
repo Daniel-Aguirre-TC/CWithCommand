@@ -56,6 +56,31 @@ namespace ConsoleTips
                 "Example of the Ternary Operator:\ncondition ? outcomeIfTrue : outcomeIfFalse;\nbool isEvenNumber ? true : false;   <-- this example will return true if isEvenNumber is true.",
                 "Ternary Operators, also known as the \"Inline-if\"and is syntax sugar, is a shorthand verrsion of if-else statement. The word ternary means composed of three parts, so this operator must always have three operands. It will return one of two values, and should be used to assign values."),
         };
+
+        internal static List<Tip> selectionStatements = new List<Tip>()
+        { new Tip ("Selection Statements:",
+            "Examples of Selection Statements:\n if ( condition ){ Code Ran if True }\nelse if ( secondCondition ){ Code Ran if condition false but secondCondition true }\nelse { Code Ran if Above is False }",
+            "The above examples cover If, ElseIf, and Else statements. You can also use a switch statement to compare a variable against multiple \"cases\""),
+            new Tip ("If Statement:",
+            "",
+            ""),
+            new Tip ("",
+            "",
+            ""),
+            new Tip ("",
+            "",
+            ""),
+            new Tip ("",
+            "",
+            ""),
+            new Tip ("",
+            "",
+            ""),
+            new Tip ("",
+            "",
+            "")
+
+        };
     }
 
 }

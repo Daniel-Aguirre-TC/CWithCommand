@@ -9,6 +9,7 @@ namespace ConsoleTips
         // tipsSection will be used to handle the base optionsList.
         public enum TipsSection { console, github, dotnet, c_sharp }
         public static bool programActive = true;
+
         public static void OfferNewCommandList()
         {
             if (programActive)
@@ -22,15 +23,13 @@ namespace ConsoleTips
                     case 'y':
                         // if yes break, this will return back through the while loop to keep program active.
                         break;
-                    case 'n':
                         // if no then EndApplication() will set programActive to false before ending the while loop that keeps the program active.
-                        EndApplication();
-                        break;
-                    // e will end the application as well.
+                    case 'n':
+                        // e will end the application as well.
                     case 'e':
                         EndApplication();
                         break;
-                    // if answer does not match, try again.
+                        // if answer does not match, try again.
                     default:
                         System.Console.WriteLine("Invalid Selection. Please Try Again.");
                         ReadAndClear();
@@ -60,6 +59,7 @@ namespace ConsoleTips
                 else Console.Clear();
             }
         }
+        
         public static void GetInput()
         {
             // temporarily assign selectedSection to console so it can compile 
