@@ -104,6 +104,7 @@ namespace ConsoleTips
                 Router.Go(selectedPage);
                 selectedPage.ProcessUserInput();
             }
+            ProcessUserInput();
         }
     }
 }
