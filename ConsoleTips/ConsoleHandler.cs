@@ -126,7 +126,7 @@ namespace ConsoleTips
             }
             else
             {
-                
+
                 Console.WriteLine($"{selection} Commands:\n----------------------\n");
                 foreach (Command cmd in commandsList)
                 {

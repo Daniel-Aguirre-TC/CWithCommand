@@ -1,16 +1,16 @@
 ﻿using ConsoleTips.Interfaces;
-using ConsoleTips.Pages;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
-namespace ConsoleTips
+namespace ConsoleTips.Pages
 {
-    public class Menu : IPage
+    public class MenuPage : IPage
     {
         public List<IPage> AllPages = new List<IPage>();
         public List<IPage> SelectablePages = new List<IPage>();
-        public Menu()
+        public MenuPage ()
         {
             // Add new pages here
             AllPages.Add(new ConsolePage());
@@ -24,7 +24,7 @@ namespace ConsoleTips
                 return null;
             }
         }
-
+        
         //public static void GetValidSelections()
         //{
         //    var type = typeof(IPage);
@@ -49,7 +49,7 @@ namespace ConsoleTips
             for (int i = 0; i < SelectablePages.Count; i++)
             {
                 IPage page = SelectablePages[i];
-                validPageStr += $"{i + 1}) ";
+                validPageStr += $"{i+1}) ";
                 validPageStr += page.Name + "\n";
             }
             ConsoleInput.Display(validPageStr);
@@ -65,8 +65,7 @@ namespace ConsoleTips
             {
                 try
                 {
-                    string inputKey = input.KeyChar.ToString();
-                    int index = Convert.ToInt32(inputKey);
+                    int index = Convert.ToInt32(input);
                     selectedPage = SelectablePages[index - 1];
                 }
                 catch (Exception ex)
@@ -103,6 +102,10 @@ namespace ConsoleTips
             {
                 Router.Go(selectedPage);
                 selectedPage.ProcessUserInput();
+            }
+            else
+            {
+                ProcessUserInput();
             }
         }
     }
